@@ -4,7 +4,9 @@
   "description": "A desktop client for Soundcloud",
   "main": "main.js",
   "scripts": {
-    "start": "electron dist"
+    "preinit": "gulp start",
+    "electron": "electron dist",
+    "start": "npm run preinit && START /MIN npm run electron && gulp watch"
   },
   "repository": {
     "type": "git",
