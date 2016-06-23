@@ -1,0 +1,18 @@
+{
+  "name": "soundmist",
+  "version": "0.0.1",
+  "description": "A desktop client for Soundcloud",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kattjakt/soundmist.git"
+  },
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  }
+}
