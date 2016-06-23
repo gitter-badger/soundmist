@@ -4,7 +4,7 @@
   "description": "A desktop client for Soundcloud",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron dist"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,10 @@
     "electron-prebuilt": "^1.2.0"
   },
   "dependencies": {
-    "angular": "^1.5.7"
+    "angular": "^1.5.7",
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-less": "^3.1.0",
+    "gulp-livereload": "^3.8.1"
   }
 }
