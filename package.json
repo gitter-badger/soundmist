@@ -14,5 +14,8 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "angular": "^1.5.7"
   }
 }
