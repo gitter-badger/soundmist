@@ -3,7 +3,7 @@ var livereload = require('gulp-livereload')
 var jade = require('gulp-jade')
 var sass = require('gulp-sass')
 
-let out = './dist'
+let out = '.tmp'
 let structured = {
   base: '.'
 }
@@ -13,7 +13,7 @@ gulp.task('vital', () => {
 })
 
 gulp.task('jade', () => {
-  gulp.src('./**/*.jade', structured)
+  gulp.src('**/*.jade', structured)
     .pipe(jade())
     .pipe(gulp.dest(out))
     .pipe(livereload())
@@ -36,7 +36,7 @@ gulp.task('watch', () => {
   livereload.listen()
 
   gulp.watch('package.json', ['vital'])
-  gulp.watch('./**/*.jade', ['jade'])
+  gulp.watch('**/*.jade', ['jade'])
   gulp.watch(['main.js', 'scripts/**/*.js'], ['scripts'])
   gulp.watch(['styles/**/*.sass', 'styles/**/*.scss'], ['sass'])
 });
