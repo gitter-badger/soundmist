@@ -1,12 +1,29 @@
 nav.sidebar
   section.search-anything
+    i(class="fa fa-search" aria-hidden="true")
     input(type="text" placeholder="Search anything")
     
   section.browse
     h3 Browse
-    a(href="/") Stream
-    a(href="/") Following
-    a(href="/") Likes
+    div
+      i(class="fa fa-music" aria-hidden="true")
+      a(href="/") Stream
+      
+    div
+      i(class="fa fa-bar-chart" aria-hidden="true")
+      a(href="/") Charts
+      
+    div
+      i(class="fa fa-globe" aria-hidden="true")
+      a(href="/") Discover
+      
+    div.active
+      i(class="fa fa-users" aria-hidden="true")
+      a(href="/") Following
+    
+    div
+      i(class="fa fa-heart" aria-hidden="true")
+      a(href="/") Likes
 
   section.playlists
     h3 Playlists
