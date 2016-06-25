@@ -6,7 +6,7 @@ html
     link(rel="stylesheet" href="style.css")
   
   body(ng-app='soundmist')
-    h1 hejsan
+    <sidebar></sidebar>
     div(ng-view="")
  
   script(src="../../node_modules/angular/angular.js")
@@ -14,6 +14,7 @@ html
   
   script(src="app.js")
   script(src="components/feed/feed.js")
+  script(src="directives/sidebar/sidebar.js")
   
   
   script(src="http://localhost:35729/livereload.js")
