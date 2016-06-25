@@ -2,6 +2,7 @@ var gulp = require('gulp')
 var livereload = require('gulp-livereload')
 var jade = require('gulp-jade')
 var sass = require('gulp-sass')
+var concat = require('gulp-concat')
 
 let out = '.tmp'
 let structured = {
@@ -28,6 +29,7 @@ gulp.task('scripts', () => {
 gulp.task('sass', () => {
   gulp.src(['app/**/*.sass', 'app/**/*.scss'], structured)
     .pipe(sass().on('error', sass.logError))
+    .pipe(concat('app/style.css'))
     .pipe(gulp.dest(out))
     .pipe(livereload())
 })
