@@ -1,32 +1,28 @@
 nav.sidebar
-  section.search-anything
+  .search-area
     i(class="fa fa-search" aria-hidden="true")
-    input(type="text" placeholder="Search anything")
+    input(type="text" placeholder="Search anything").search-field
     
-  section.browse
-    h3 Browse
-    div(md-ink-ripple="#FF8820" ui-sref-active="active")
+  .browse
+    h3.section Browse
+          
+    a(ui-sref="stream" md-ink-ripple="#FF8820" ui-sref-active="active") Stream
       i(class="fa fa-music" aria-hidden="true")
-      a(ui-sref="stream") Stream
       
-    div(md-ink-ripple="#FF8820" ui-sref-active="active")
+    a(ui-sref="charts" md-ink-ripple="#FF8820" ui-sref-active="active") Charts
       i(class="fa fa-bar-chart" aria-hidden="true")
-      a(ui-sref="charts") Charts
-      
-    div(md-ink-ripple="#FF8820" ui-sref-active="active")
-      i(class="fa fa-globe" aria-hidden="true")
-      a(ui-sref="/") Discover
-      
-    div(md-ink-ripple="#FF8820" ui-sref-active="active")
-      i(class="fa fa-users" aria-hidden="true")
-      a(ui-sref="/") Following
-    
-    div(md-ink-ripple="#FF8820" ui-sref-active="active")
-      i(class="fa fa-heart" aria-hidden="true")
-      a(ui-sref="/") Likes
 
-  section.playlists
-    h3 Playlists
-    a(href="/") Förfest 
-    a(href="/") Efterfest
-    a(href="/") Efter-efterfest
+    a(ui-sref="/" md-ink-ripple="#FF8820" ui-sref-active="active") Discover
+      i(class="fa fa-globe" aria-hidden="true")
+      
+    a(ui-sref="/" md-ink-ripple="#FF8820" ui-sref-active="active") Following
+      i(class="fa fa-users" aria-hidden="true")
+
+    a(ui-sref="/" md-ink-ripple="#FF8820" ui-sref-active="active") Likes
+      i(class="fa fa-heart" aria-hidden="true")
+
+  .playlists
+    h3.section Playlists
+    a(md-ink-ripple) Förfest 
+    a(md-ink-ripple) Efterfest
+    a(md-ink-ripple) Efter-efterfest

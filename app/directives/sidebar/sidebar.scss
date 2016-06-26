@@ -2,7 +2,18 @@
   background-color: white;
   height: 100%;
 
-  h3 {
+  .link {
+    font-family: 'Roboto';
+    color: #797979;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .section {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
@@ -13,12 +24,12 @@
     margin-left: 25px;
   }
 
-  .search-anything {
+  .search-area {
     display: flex;
     align-items: center;
     padding-left: 20px;
 
-    > input {
+    .search-field {
       width: 100%;
       padding: 5px;
       padding-top: 20px;
@@ -39,52 +50,38 @@
   }
 
   .browse {
-    > div {
-      position: relative;
-      padding-top: 6px;
+    .active {
+      font-weight: 500;
+      color: #FF8820;
+      i {
+        color: #FF8820;
+      }
+    }
 
+    > a {
+      @extend .link;
+      padding: 10px 0 10px 25px;
+
+      i {
+        color: #cccccc;
+        float: left;
+        text-align: center;
+        width: 25px;
+        margin-top: -1px;
+        margin-right: 10px;
+        font-size: 20px;
+      }
     }
   }
 
-  .browse, .playlists {
-    a {
-      font-family: 'Roboto';
-      text-decoration: none;
-      color: #797979;
-      display: inline-block;
-      font-size: 15px;
-      margin-left: 10px;
-      margin-bottom: 10px;
-      font-weight: 300;
-    }
-
-    i {
-      margin-left: 30px;
-      color: #cccccc;
-      width: 15px;
-      text-align: center;
-    }
-  }
 
   .playlists {
     margin-top: 50px;
     a {
-      margin-left: 25px;
-      display: block;
+      @extend .link;
+      padding: 10px 10px 10px 25px;
     }
   }
-
-  .active {
-    i {
-      color: #FF8820;
-    }
-
-    a {
-      font-weight: 500;
-      color: #FF8820;
-    }
-  }
-
 
 
 }
