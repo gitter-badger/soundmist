@@ -24,12 +24,15 @@
     "angular-material": "^1.1.0-rc.5",
     "angular-route": "^1.5.7",
     "angular-ui-router": "^0.3.1",
+    "electron-json-storage": "^2.0.0",
+    "express": "^4.14.0",
     "font-awesome": "^4.6.3",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
     "gulp-livereload": "^3.8.1",
     "gulp-sass": "^2.3.2",
-    "gulp-util": "^3.0.7"
+    "gulp-util": "^3.0.7",
+    "request": "^2.72.0"
   }
 }

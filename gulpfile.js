@@ -23,7 +23,7 @@ gulp.task('jade', () => {
 })
 
 gulp.task('scripts', () => {
-  gulp.src(['main.js', 'app/**/*.js'], structured)
+  gulp.src(['main.js', 'auth.js', 'app/**/*.js'], structured)
     .pipe(gulp.dest(out))
     .pipe(livereload())
 })
@@ -41,7 +41,7 @@ gulp.task('watch', () => {
 
   gulp.watch('package.json', ['vital'])
   gulp.watch(['index.jade', 'app/**/*.jade'], ['jade'])
-  gulp.watch(['main.js', 'app/**/*.js'], ['scripts'])
+  gulp.watch(['main.js', 'auth.js', 'app/**/*.js'], ['scripts'])
   gulp.watch(['app/**/*.sass', 'app/**/*.scss'], ['sass'])
 });
 
