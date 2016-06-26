@@ -8,13 +8,15 @@ html
   
   body(ng-app='soundmist')
     sidebar
-    section(ng-view)
+    section(ui-view)
  
   script(src="../../node_modules/angular/angular.js")
   script(src="../../node_modules/angular-route/angular-route.js")
+  script(src="../../node_modules/angular-ui-router/release/angular-ui-router.js")
   
   script(src="app.js")
-  script(src="components/feed/feed.js")
+  script(src="components/charts/charts.js")
+  script(src="components/stream/stream.js")
   script(src="directives/sidebar/sidebar.js")
   
   

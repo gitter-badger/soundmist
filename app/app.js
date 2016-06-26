@@ -1,12 +1,19 @@
-angular.module('soundmist', ['ngRoute']);
+angular.module('soundmist', ['ui.router']);
 
-angular.module('soundmist').config($routeProvider => {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'components/feed/feed.html',
-      controller: 'feed'
+angular.module('soundmist').config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  $locationProvider.html5Mode(false);
+
+  $urlRouterProvider.otherwise('/stream')
+
+  $stateProvider
+    .state('stream', {
+      url: '/stream',
+      templateUrl: 'components/stream/stream.html',
+      controller: 'stream'
     })
-    .otherwise({
-      redirectTo: '/'
-    });
+    .state('charts', {
+      url: '/charts',
+      templateUrl: 'components/charts/charts.html',
+      controller: 'charts'
+    })
 });
