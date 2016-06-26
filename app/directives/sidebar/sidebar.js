@@ -9,5 +9,7 @@ angular.module('soundmist').directive('sidebar', function () {
 })
 
 let controller = function ($scope) {
-
+  $scope.isActive = function(route) {
+      return ('/' + route) === $location.path();
+  }
 }

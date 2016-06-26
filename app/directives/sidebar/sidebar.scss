@@ -1,4 +1,7 @@
 .sidebar {
+  background-color: white;
+  height: 100%;
+
   h3 {
     text-transform: uppercase;
     font-size: 14px;
@@ -32,6 +35,14 @@
     i {
       margin-top: 3px;
       color: #cccccc;
+    }
+  }
+
+  .browse {
+    > div {
+      position: relative;
+      padding-top: 6px;
+
     }
   }
 
