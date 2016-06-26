@@ -81,6 +81,16 @@
       @extend .link;
       padding: 10px 10px 10px 25px;
     }
+
+    .new {
+      float: right;
+      margin-right: 10px;
+      font-size: 20px;
+      margin-top: -4px;
+      color: #ff8820;
+      font-weight: 600;
+      cursor: pointer;
+    }
   }
 
 

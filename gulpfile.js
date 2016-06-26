@@ -3,6 +3,7 @@ var livereload = require('gulp-livereload')
 var jade = require('gulp-jade')
 var sass = require('gulp-sass')
 var concat = require('gulp-concat')
+var gutil = require('gulp-util')
 
 let out = '.tmp'
 let structured = {
@@ -16,6 +17,7 @@ gulp.task('vital', () => {
 gulp.task('jade', () => {
   gulp.src(['index.jade', 'app/**/*.jade'], structured)
     .pipe(jade())
+    .on('error', gutil.log)
     .pipe(gulp.dest(out))
     .pipe(livereload())
 })
