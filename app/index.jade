@@ -8,8 +8,10 @@ html
     link(rel="stylesheet" href="../../node_modules/angular-material/angular-material.css")
     
   body(ng-app='soundmist')
-    sidebar
-    section(ui-view)
+    overlay.fade(ng-hide='isLoaded')
+    section.content(ng-cloak)
+      sidebar
+      section(ui-view)
  
   script(src="../../node_modules/angular/angular.js")
   script(src="../../node_modules/angular-route/angular-route.js")
@@ -22,7 +24,8 @@ html
   script(src="components/charts/charts.js")
   script(src="components/stream/stream.js")
   script(src="directives/sidebar/sidebar.js")
-  script(src="services/user.js")
+  script(src="directives/overlay/overlay.js")
+  script(src="services/handler.js")
   
   
   script(src="http://localhost:35729/livereload.js")

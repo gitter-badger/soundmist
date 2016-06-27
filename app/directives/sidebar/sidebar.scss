@@ -2,6 +2,34 @@
   background-color: white;
   height: 100%;
 
+  .user {
+    padding: 20px;
+    display: flex;
+
+    .picture {
+      > img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+
+    .texts {
+      font-family: 'Roboto', sans-serif;
+      padding-left: 8px;
+      padding-top: 6px;
+
+      .name {
+        font-size: 12px;
+      }
+
+      .username {
+        font-size: 16px;
+      }
+    }
+
+  }
+
   .link {
     font-family: 'Roboto';
     color: #797979;

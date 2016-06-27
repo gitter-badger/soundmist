@@ -1,4 +1,4 @@
-angular.module('soundmist', ['ui.router', 'ngMaterial']);
+angular.module('soundmist', ['ui.router', 'ngMaterial', 'ngAnimate']);
 
 angular.module('soundmist').config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(false);
@@ -17,3 +17,7 @@ angular.module('soundmist').config(function ($stateProvider, $urlRouterProvider,
       controller: 'charts'
     })
 });
+
+angular.module('soundmist').run(function ($rootScope, Handler) {
+  $rootScope.isLoaded = Handler.isLoaded
+})

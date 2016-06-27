@@ -1,3 +1,3 @@
-angular.module('soundmist').controller('stream', function ($scope, UserService) {
+angular.module('soundmist').controller('stream', function ($scope, Handler) {
   $scope.who = 'World!';
 })
