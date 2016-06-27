@@ -1,0 +1,11 @@
+.stream {
+  > h1 {
+    font-size: 22px;
+    margin-left: 15px;
+    font-weight: 300;
+  }
+
+  .item:not(:last-child) {
+    border-bottom: 1px solid #e2e2e2;
+  }
+}

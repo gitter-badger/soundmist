@@ -1,0 +1,27 @@
+.chant {
+  margin: 15px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+
+  .artwork > img {
+    border-radius: 2px;
+    width: 150px
+  }
+
+  .title, .artist {
+    font-family: 'Roboto';
+    font-weight: 300;
+    margin: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .artist {
+    margin-bottom: 0;
+  }
+
+}

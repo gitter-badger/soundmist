@@ -2,7 +2,7 @@
 
 var ipc = require('electron').ipcRenderer
 
-angular.module('soundmist').service('Handler', function ($http, $q) {
+angular.module('soundmist').service('Handler', function ($http, $q, $window) {
   const baseUrl = 'https://api.soundcloud.com'
   let self = this
   let q = $q.defer()
@@ -17,7 +17,7 @@ angular.module('soundmist').service('Handler', function ($http, $q) {
   ipc.send('authenticate')
   ipc.on('token', function(event, token) {
     console.info(token)
-    self._token = token
+    $window.token = token
     q.resolve(token)
   })
 
