@@ -1,6 +1,7 @@
 .sidebar {
   background-color: white;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 
   .user {
     padding: 20px;
@@ -104,6 +105,7 @@
 
 
   .playlists {
+    height: 100%;
     margin-top: 50px;
     a {
       @extend .link;
@@ -125,6 +127,12 @@
         transform: rotate(90deg);
       }
 
+    }
+
+
+    .scrollarea {
+      overflow: auto;
+      height: 100%;
     }
   }
 

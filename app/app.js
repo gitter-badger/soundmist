@@ -19,5 +19,6 @@ angular.module('soundmist').config(function ($stateProvider, $urlRouterProvider,
 });
 
 angular.module('soundmist').run(function ($rootScope, Handler) {
-  $rootScope.isLoaded = Handler.isLoaded
+  //$rootScope.isLoaded = Handler.isLoaded
+  $rootScope.Handler = Handler
 })

@@ -31,6 +31,8 @@ nav.sidebar
   .playlists
     h3.section Playlists
       .new +
-    a(md-ink-ripple) Förfest 
-    a(md-ink-ripple) Efterfest
-    a(md-ink-ripple) Efter-efterfest
+      
+    .scrollarea
+      a(md-ink-ripple ng-repeat="playlist in playlists") {{ playlist.title }} 
+    //a(md-ink-ripple) Efterfest
+    //a(md-ink-ripple) Efter-efterfest

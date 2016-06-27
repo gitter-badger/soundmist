@@ -7,6 +7,13 @@ angular.module('soundmist').service('Handler', function ($http, $q) {
   let self = this
   let q = $q.defer()
 
+  self.isLoaded = false
+
+  let defers = {
+    '/me':            $q.defer(),
+    '/me/playlists':  $q.defer()
+  }
+
   ipc.send('authenticate')
   ipc.on('token', function(event, token) {
     console.info(token)
@@ -14,9 +21,11 @@ angular.module('soundmist').service('Handler', function ($http, $q) {
     q.resolve(token)
   })
 
-  this.isLoaded = function () {
-    return this._token
-  }
+  var promises = Object.keys(defers).map(key => defers[key].promise)
+  $q.all(promises).then(data => {
+    self.isLoaded = true
+    console.log('finished')
+  })
 
   this.fetch = function(endpoint) {
     return q.promise.then(token => {
@@ -28,7 +37,13 @@ angular.module('soundmist').service('Handler', function ($http, $q) {
         }
       }
 
-      return $http(request).then(data => data.data)
+      return $http(request).then(data => {
+
+        defers[endpoint].resolve(data.data)
+        console.log(defers)
+
+        return data.data
+      })
     })
   }
 })

@@ -9,6 +9,11 @@ angular.module('soundmist').directive('sidebar', function (Handler) {
         $scope.user = user;
         console.warn(user)
       })
+
+      Handler.fetch('/me/playlists').then(playlists => {
+        $scope.playlists = playlists;
+        console.warn(playlists)
+      })
     }
 
   }
