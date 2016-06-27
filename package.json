@@ -4,9 +4,11 @@
   "description": "A desktop client for Soundcloud",
   "main": "main.js",
   "scripts": {
-    "preinit": "gulp start",
     "electron": "electron .tmp",
-    "start": "npm run preinit && START /MIN npm run electron && gulp watch"
+    "start": "npm run watch-linux",
+
+    "watch-linux": "gulp start && (npm run electron &) && gulp watch",
+    "watch-windows": "gulp start && START /MIN npm run electron && gulp watch"
   },
   "repository": {
     "type": "git",
