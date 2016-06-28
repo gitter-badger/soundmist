@@ -38,6 +38,12 @@ gulp.task('sass', () => {
     .pipe(livereload())
 })
 
+gulp.task('media', () => {
+  gulp.src(['app/media/**/*'], structured)
+    .pipe(gulp.dest(out))
+    .pipe(livereload())
+})
+
 gulp.task('watch', () => {
   livereload.listen()
 
@@ -45,8 +51,9 @@ gulp.task('watch', () => {
   gulp.watch(['index.jade', 'app/**/*.jade'], ['jade'])
   gulp.watch(['main.js', 'auth.js', 'app/**/*.js'], ['scripts'])
   gulp.watch(['app/**/*.sass', 'app/**/*.scss'], ['sass'])
+  gulp.watch(['app/media/**/*'], ['media'])
 });
 
 gulp.task('start', () => {
-  gulp.start('vital', 'jade', 'sass', 'scripts')
+  gulp.start('vital', 'jade', 'sass', 'scripts', 'media')
 })
