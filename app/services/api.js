@@ -16,4 +16,8 @@ angular.module('soundmist').service('API', function ($http, $q) {
 
     return $http(config)
   }
+
+  this.getStreamURL = function (item) {
+    return item.track.uri + '/stream?oauth_token=' + token
+  }
 })

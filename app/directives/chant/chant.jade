@@ -15,9 +15,9 @@
     .player
       .controls
         .play
-          md-button(class="md-fab" aria-label="Profile")
-            i(class="fa fa-play" aria-hidden="true")
-
+          md-button(class="md-fab" aria-label="Profile" ng-click="Player.isPlaying(item) ? Player.pause(item) : Player.play(item)")
+            i(class="fa fa-play offcenter" aria-hidden="true" ng-hide="Player.isPlaying(item)")
+            i(class="fa fa-pause" aria-hidden="true" ng-show="Player.isPlaying(item)")
           //i(class="fa fa-play" aria-hidden="true")
           
         .meta

@@ -1,4 +1,4 @@
-angular.module('soundmist', ['ui.router', 'ngMaterial', 'ngAnimate']);
+angular.module('soundmist', ['ui.router', 'ngMaterial', 'ngAnimate', 'ngAudio']);
 
 angular.module('soundmist').config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(false);
