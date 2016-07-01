@@ -1,7 +1,8 @@
 'use strict'
 
 angular.module('soundmist').service('Player', class {
-  constructor ($http, ngAudio, API) {
+  constructor ($rootScope, $http, ngAudio, API) {
+    this.rootScope = $rootScope
     this.Audio = ngAudio
     this.API = API
 
@@ -28,6 +29,8 @@ angular.module('soundmist').service('Player', class {
 
       this.Player = this.Audio.load(this.API.getStreamURL(item))
       this.Player.play()
+
+      this.rootScope.$emit('SHOW_HEADER')
     }
 
     this.paused = false

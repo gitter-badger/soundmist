@@ -21,7 +21,27 @@ body {
   }
 }
 
+header, sidebar, .content > section {
+  transition: margin 1s ease, opacity 1s ease;
+}
+
+.hide-header {
+  header {
+    opacity: 0;
+    margin-top: -$header-height;
+  }
+
+  sidebar {
+    margin-top: 0;
+  }
+
+  > section {
+    margin-top: 0px !important;
+  }
+}
+
 header {
+  opacity: 1;
   z-index: 1;
   position: fixed;
   height: $header-height;

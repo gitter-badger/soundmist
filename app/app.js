@@ -20,6 +20,7 @@ angular.module('soundmist').config(function ($stateProvider, $urlRouterProvider,
 
 angular.module('soundmist').run(function ($rootScope, Handler) {
   $rootScope.Handler = Handler
+  $rootScope.hideHeader = true
 
   $rootScope.$watch('Handler.isLoaded', function (value) {
     $rootScope.$emit('SITE_LOADED')
@@ -27,5 +28,9 @@ angular.module('soundmist').run(function ($rootScope, Handler) {
 
   angular.element(window).on('resize', () => {
     $rootScope.$emit('WINDOW_RESIZE')
+  })
+
+  $rootScope.$on('SHOW_HEADER', () => {
+    $rootScope.hideHeader = false;
   })
 })

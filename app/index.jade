@@ -11,7 +11,7 @@ html
   body(ng-app='soundmist')
     overlay.fade(ng-hide='Handler.isLoaded')
     
-    .content(ng-cloak)
+    .content(ng-cloak ng-class="{'hide-header': hideHeader}")
       header
         player
       
