@@ -8,7 +8,7 @@
     "start": "npm run watch-linux",
     "watch-linux": "gulp start && (npm run electron &) && gulp watch",
     "watch-windows": "gulp start && START /MIN npm run electron && gulp watch",
-    "build": "gulp start && electron-packager .tmp Soundmist --out=dist --prune --asar --platform=win32 --arch=x64"
+    "build": "gulp start && electron-packager .tmp Soundmist --out=dist --prune --asar --all"
   },
   "repository": {
     "type": "git",
