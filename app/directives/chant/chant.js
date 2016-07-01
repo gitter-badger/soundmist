@@ -56,7 +56,7 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope, Play
           let samples_max = Math.max.apply(Math, this.sample)
           let ratio = height / samples_max
 
-          for (var i = 0; i < this.width; i += 2) {
+          for (var i = 0; i < this.width; i++) {
             let offset = Math.round((this.sample.length / this.width) * i * barWidth)
 
             // Top half
