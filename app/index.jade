@@ -10,10 +10,15 @@ html
       
   body(ng-app='soundmist')
     overlay.fade(ng-hide='Handler.isLoaded')
-    section.content(ng-cloak)
-      sidebar
-      section(ui-view)
-      player
+    
+    .content(ng-cloak)
+      header
+        player
+      
+      section
+        sidebar
+        section(ui-view)
+        
  
   script(src="../../node_modules/angular/angular.js")
   script(src="../../node_modules/angular-route/angular-route.js")

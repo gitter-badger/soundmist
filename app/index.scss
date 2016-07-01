@@ -3,6 +3,7 @@
 @import 'https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700';
 
 $sidebar-width: 240px;
+$header-height: 200px;
 
 * {
   box-sizing: border-box;
@@ -15,18 +16,29 @@ body {
   background-color: white;
 
   > .content {
-    display: flex
+    display: flex;
+    flex-direction: column;
   }
 }
 
-player {
-  width: calc(100% - #{$sidebar-width});
+header {
+  z-index: 1;
   position: fixed;
-  bottom: 0;
-  left: $sidebar-width;
+  height: $header-height;
+  width: 100%;
+}
+
+.content > section {
+  margin-top: $header-height;
+}
+
+player {
+  width: 100%;
 }
 
 sidebar {
+  z-index: 2;
+  margin-top: -50px;
   position: fixed;
   width: $sidebar-width;
   height: 100vh;
@@ -35,7 +47,7 @@ sidebar {
 }
 
 section[ui-view] {
-  width: 100%;
+  // width: 100%;
   min-height: 100vh;
   margin-left: $sidebar-width;
   padding-left: 20px;
