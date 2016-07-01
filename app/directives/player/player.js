@@ -6,10 +6,17 @@ angular.module('soundmist').directive('player', function (Player) {
     templateUrl: 'directives/player/player.html',
     link: function (scope) {
       scope.Player = Player
-    },
-    controller: function ($scope, Handler) {
-      console.log('hello world')
-    }
 
+      scope.$watch('Player.getActive()', function (item) {
+        if (item == undefined) return
+        scope.item = item
+
+        // Use the high-res artwork instead of the downscaled one provided
+        var url = item.track.artwork_url.replace('large.jpg', 't500x500.jpg')
+        scope.wallpaper = {
+          'background': 'linear-gradient(rgba(255, 126, 0, 0.90),rgba(255, 119, 0, 0.75)), url(' + url + ')'
+        }
+      })
+    }
   }
 })

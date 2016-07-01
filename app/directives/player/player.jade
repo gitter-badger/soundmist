@@ -1,11 +1,12 @@
-.wallpaper
+.wallpaper(ng-style="wallpaper")
   
   .controls 
     md-button(class="md-fab small" ng-click="Player.previous()")
       i(class="material-icons play") skip_previous
       
-    md-button(class="md-fab" ng-click="Player.play()")
+    md-button(class="md-fab" ng-class="{active: Player.isActive(item), isPlaying: Player.isPlaying(item)}" ng-click="Player.isPlaying(item) ? Player.pause(item) : Player.play(item)")
       i(class="material-icons play") play_arrow
+      i(class="material-icons pause") pause
       
     md-button(class="md-fab small" ng-click="Player.previous()")
       i(class="material-icons play") skip_next
@@ -15,12 +16,12 @@
     .playing
       .wrapper
         .cover
-          img(src="https://i1.sndcdn.com/artworks-000169656696-4vmkt9-t500x500.jpg")
+          img(src="{{ item.track.artwork_url }}")
     
         .about
-          .author Melvv
+          .author {{ item.track.user.username }}
             
-          .title Weekend
+          .title {{ item.track.title }}
     
     .upcoming
       h2 Upcoming

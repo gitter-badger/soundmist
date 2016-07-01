@@ -11,6 +11,12 @@ angular.module('soundmist').service('Player', class {
   }
 
   play (item) {
+    if (item === undefined) {
+      this.Player.play()
+      this.paused = false
+      return
+    }
+
     if (item === this.currentItem && !this.isPlaying(item)) {
       this.Player.play()
     } else {
@@ -36,6 +42,10 @@ angular.module('soundmist').service('Player', class {
 
   isActive (item) {
     return item === this.currentItem
+  }
+
+  getActive () {
+    return this.currentItem
   }
 
   isPlaying (item) {
