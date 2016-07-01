@@ -1,0 +1,32 @@
+player {
+  background-color: #383838;
+  height: 80px;
+
+  .controls {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .small {
+      transform: scale(0.7);
+    }
+
+    .md-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: #ff8820;
+      margin: 0;
+
+      i {
+       font-size: 40px;
+      }
+
+
+    }
+
+  }
+}

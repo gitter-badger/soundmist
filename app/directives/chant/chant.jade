@@ -2,17 +2,22 @@
   .artwork
     img(src="{{ item.track.artwork_url_larger }}")
     
-  .content    
+  .content 
+    .genre
+      {{ item.track.genre }}
+     
     .artist
       {{ item.user.username }}
-  
+    
     .title
-      {{item.track.title}}
+      {{ item.track.title }}
+      
+
       
     .player
       .controls
         .play
-          md-button(class="md-fab" aria-label="Profile" ng-class="{active: Player.isActive(item), isPlaying: Player.isPlaying(item)}" ng-click="Player.isPlaying(item) ? Player.pause(item) : Player.play(item)")
+          md-button(class="md-fab" ng-class="{active: Player.isActive(item), isPlaying: Player.isPlaying(item)}" ng-click="Player.isPlaying(item) ? Player.pause(item) : Player.play(item)")
             i(class="material-icons play") play_arrow
             i(class="material-icons pause") pause
           
