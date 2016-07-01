@@ -35,16 +35,16 @@ angular.module('soundmist').service('Player', class {
     }
   }
 
-  isCurrentItem (item) {
+  isActive (item) {
     return item === this.currentItem
   }
 
   isPlaying (item) {
-    return this.isCurrentItem(item) && this.paused === false
+    return this.isActive(item) && this.paused === false
   }
 
   setProgress (item, progress) {
-    if (this.isCurrentItem (item)) {
+    if (this.isActive (item)) {
       this.Player.setProgress(progress)
     }
   }
