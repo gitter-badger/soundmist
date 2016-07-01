@@ -1,11 +1,13 @@
 'use strict'
 
+var fs = require('fs')
 var gulp = require('gulp')
 var livereload = require('gulp-livereload')
 var jade = require('gulp-jade')
 var sass = require('gulp-sass')
 var concat = require('gulp-concat')
 var gutil = require('gulp-util')
+var symlink = require('gulp-sym')
 
 let out = '.tmp'
 let structured = {
@@ -14,6 +16,16 @@ let structured = {
 
 gulp.task('vital', () => {
   gulp.src('package.json').pipe(gulp.dest(out))
+})
+
+gulp.task('symlinks', () => {
+  if (!fs.existsSync(out + '/bower_components')) {
+    gulp.src('bower_components').pipe(symlink(out + '/bower_components'))
+  }
+
+  if (!fs.existsSync(out + '/node_modules')) {
+    gulp.src('node_modules').pipe(symlink(out + '/node_modules'))
+  }
 })
 
 gulp.task('jade', () => {
@@ -55,5 +67,5 @@ gulp.task('watch', () => {
 });
 
 gulp.task('start', () => {
-  gulp.start('vital', 'jade', 'sass', 'scripts', 'media')
+  gulp.start('symlinks', 'vital', 'jade', 'sass', 'scripts', 'media')
 })
