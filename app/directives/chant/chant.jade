@@ -2,10 +2,7 @@
   .artwork
     img(src="{{ item.track.artwork_url_larger }}")
     
-  .content
-    //.type
-    //  {{item.type}}
-
+  .content    
     .artist
       {{ item.user.username }}
   
@@ -16,22 +13,13 @@
       .controls
         .play
           md-button(class="md-fab" aria-label="Profile" ng-class="{active: Player.isActive(item), isPlaying: Player.isPlaying(item)}" ng-click="Player.isPlaying(item) ? Player.pause(item) : Player.play(item)")
-            i(class="play fa fa-play visual-center" aria-hidden="true" )
-            i(class="pause fa fa-pause" aria-hidden="true" )
-          //i(class="fa fa-play" aria-hidden="true")
+            i(class="material-icons play") play_arrow
+            i(class="material-icons pause") pause
           
         .meta
-          img(src="media/heart-outlined.svg")
-          img(src="media/retweet.svg")
-          img(src="media/forward.svg")
-          //img(src="media/plus.svg")
-          //i(class="fa fa-heart-o" aria-hidden="true")
-          //i(class="fa fa-retweet" aria-hidden="true")
-          //i(class="fa fa-share-alt" aria-hidden="true")
-          //i(class="fa fa-plus" aria-hidden="true")
+          i(class="material-icons") favorite_border
+          i(class="material-icons") cached
+          i(class="material-icons") link
+
       .waveform
         canvas
-      
-      // entypo-heart-empty
-      // entypo-share
-      // entypo-retweet

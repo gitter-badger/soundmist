@@ -27,17 +27,9 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope, Play
           this.canvas.addEventListener('click', event => {
             this.click(event.offsetX)
           }, false)
-
-          /*this.canvas.addEventListener('mouseleave', event => {
-            this.draw(false)
-          }, false)*/
-
-          this.draw()
         }
 
         draw (progress) {
-          this.canvas.style.display = 'none'
-
           this.width = this.parent.offsetWidth
           let height = this.parent.offsetHeight
           let middle = height / 2
@@ -59,24 +51,16 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope, Play
           for (var i = 0; i < this.width; i++) {
             let offset = Math.round((this.sample.length / this.width) * i * barWidth)
 
+            let hasElapsed = progress && i * barWidth < progress
+
             // Top half
-            if (progress && i * barWidth < progress) {
-              this.context.fillStyle = "#ff8820"
-            } else {
-              this.context.fillStyle = "#cbcbcb"
-            }
+            this.context.fillStyle = hasElapsed ? "#ff8820" : "#cbcbcb"
             this.context.fillRect(i * barWidth, middle, 2, (-this.sample[offset] * ratio) / 2)
 
             // Bottom half
-            if (progress && i * barWidth < progress) {
-              this.context.fillStyle = "#ff9f4c"
-            } else {
-              this.context.fillStyle = "#dcdcdc"
-            }
+            this.context.fillStyle = hasElapsed ? "#ff9f4c" : "#dcdcdc"
             this.context.fillRect(i * barWidth, middle, 2, (this.sample[offset] * ratio) / 3)
           }
-
-          this.canvas.style.display = 'block'
         }
 
         click (position) {
@@ -89,18 +73,17 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope, Play
         }
       }
 
-
-
       $http.get(scope.item.track.waveform_url).then(data => {
         let samples = data.data.samples
-
         let waveform = new Waveform(samples)
-        waveform.draw()
 
-        $rootScope.$on('CHANT_WAVEFORM_RESIZE', event => {
+        $rootScope.$on('WINDOW_RESIZE', event => {
           waveform.draw()
         })
 
+        $rootScope.$on('SITE_LOADED', event => {
+          waveform.draw()
+        })
 
         scope.$watch('Player.getProgress(item)', function (progress) {
           waveform.draw(progress)

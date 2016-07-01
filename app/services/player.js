@@ -8,7 +8,6 @@ angular.module('soundmist').service('Player', class {
     this.Player = null
     this.currentItem = null
     this.paused = false
-    // this.sound = ngAudio.load('path/to/file.mp3')
   }
 
   play (item) {

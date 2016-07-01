@@ -21,7 +21,11 @@ angular.module('soundmist').config(function ($stateProvider, $urlRouterProvider,
 angular.module('soundmist').run(function ($rootScope, Handler) {
   $rootScope.Handler = Handler
 
+  $rootScope.$watch('Handler.isLoaded', function (value) {
+    $rootScope.$emit('SITE_LOADED')
+  }, true)
+
   angular.element(window).on('resize', () => {
-    $rootScope.$emit('CHANT_WAVEFORM_RESIZE')
+    $rootScope.$emit('WINDOW_RESIZE')
   })
 })
