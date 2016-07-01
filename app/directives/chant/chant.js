@@ -39,6 +39,8 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope) {
 
           let width = this.parent.offsetWidth
           let height = this.parent.offsetHeight
+          let middle = height / 2
+          let barWidth = 1
 
           this.canvas.style.width   = width + 'px'
           this.canvas.style.height  = height + 'px'
@@ -51,16 +53,22 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope) {
           let samples_max = Math.max.apply(Math, this.sample)
           let ratio = height / samples_max
 
-          for (var i = 0; i < width; i++) {
-            let offset = Math.round((this.sample.length / width) * i * 3)
+          for (var i = 0; i < width; i += 2) {
+            let offset = Math.round((this.sample.length / width) * i * barWidth)
 
-            if (hoverPosition && i * 3 < hoverPosition) {
+            if (hoverPosition && i * barWidth < hoverPosition) {
               this.context.fillStyle = "#ff6a20"
             } else {
-              this.context.fillStyle = "#d4d4d4"
+              this.context.fillStyle = "#a9a9a9"
             }
+            this.context.fillRect(i * barWidth, middle, 2, (-this.sample[offset] * ratio) / 2)
 
-            this.context.fillRect(i * 3, height, 2, -this.sample[offset] * ratio)
+            if (hoverPosition && i * barWidth < hoverPosition) {
+              this.context.fillStyle = "#ff874c"
+            } else {
+              this.context.fillStyle = "#dcdcdc"
+            }
+            this.context.fillRect(i * barWidth, middle, 2, (this.sample[offset] * ratio) / 3)
           }
 
           this.canvas.style.display = 'block'
