@@ -84,8 +84,25 @@ sidebar {
 
 section[ui-view] {
   overflow-y: scroll;
+  width: 100%;
   height: 100%;
   padding-left: 20px;
   background-color: #f5f5f5;
+}
 
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #cbcbcb;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #cbcbcb;
 }
