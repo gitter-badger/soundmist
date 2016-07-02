@@ -14,15 +14,18 @@ $header-height: 200px;
 body {
   margin: 0;
   background-color: white;
-
-  > .content {
-    display: flex;
-    flex-direction: column;
-  }
+  overflow: hidden;
 }
 
-header, sidebar, .content > section {
-  transition: margin 1s ease, opacity 1s ease;
+header, sidebar, .content > main {
+  transition: margin 1s ease, opacity 1s ease, top 1s ease;
+}
+
+body > .content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
 }
 
 .hide-header {
@@ -38,18 +41,32 @@ header, sidebar, .content > section {
   > section {
     margin-top: 0px !important;
   }
+
+  section[ui-view] {
+    height: 100vh;
+  }
+
+  main {
+    top: 0;
+  }
 }
 
 header {
   opacity: 1;
   z-index: 1;
-  position: fixed;
   height: $header-height;
   width: 100%;
 }
 
-.content > section {
-  margin-top: $header-height;
+main {
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: row;
 }
 
 player {
@@ -57,19 +74,18 @@ player {
 }
 
 sidebar {
-  z-index: 2;
   margin-top: -50px;
-  position: fixed;
   width: $sidebar-width;
-  height: 100vh;
+  flex: 0 0 $sidebar-width;
 
+  z-index: 2;
   box-shadow: 0px 0px 5px 0px rgba(239, 239, 239, 0.75);;
 }
 
 section[ui-view] {
-  // width: 100%;
-  min-height: 100vh;
-  margin-left: $sidebar-width;
+  overflow-y: scroll;
+  height: 100%;
   padding-left: 20px;
   background-color: #f5f5f5;
+
 }

@@ -10,9 +10,8 @@ nav.sidebar
   //  i(class="fa fa-search" aria-hidden="true")
   //  input(type="text" placeholder="Search anything").search-field
     
-  .browse
-    h3.section Browse
-          
+  h3.section Browse
+  .browse          
     a(ui-sref="stream" md-ink-ripple="#FF8820" ui-sref-active="active") Stream
       i(class="fa fa-music" aria-hidden="true")
       
@@ -28,9 +27,10 @@ nav.sidebar
     a(ui-sref="/" md-ink-ripple="#FF8820" ui-sref-active="active") Likes
       i(class="fa fa-heart" aria-hidden="true")
 
+  h3.section Playlists
+    .new +
   .playlists
-    h3.section Playlists
-      .new +
+    
       
     .scrollarea
       a(md-ink-ripple ng-repeat="playlist in playlists") {{ playlist.title }} 

@@ -1,7 +1,9 @@
 .sidebar {
+  height: 100%;
   background-color: white;
-  height: 100vh;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
 
   .user {
     padding: 20px;
@@ -28,7 +30,6 @@
         font-size: 16px;
       }
     }
-
   }
 
   .link {
@@ -51,6 +52,22 @@
     margin: 10px;
     margin-bottom: 20px;
     margin-left: 25px;
+
+    .new {
+      float: right;
+      padding: 5px;
+      font-size: 20px;
+      margin-top: -10px;
+      color: #ff8820;
+      font-weight: 600;
+      cursor: pointer;
+
+      transition: transform 0.1s ease-in-out;
+
+      &:hover {
+        transform: rotate(90deg);
+      }
+    }
   }
 
   .search-area {
@@ -79,6 +96,8 @@
   }
 
   .browse {
+    margin-bottom: 50px;
+    
     .active {
       font-weight: 500;
       color: #FF8820;
@@ -103,38 +122,11 @@
     }
   }
 
-
   .playlists {
-    height: 100%;
-    margin-top: 50px;
+    overflow-y: scroll;
     a {
       @extend .link;
       padding: 10px 10px 10px 25px;
     }
-
-    .new {
-      float: right;
-      padding: 5px;
-      font-size: 20px;
-      margin-top: -10px;
-      color: #ff8820;
-      font-weight: 600;
-      cursor: pointer;
-
-      transition: transform 0.1s ease-in-out;
-
-      &:hover {
-        transform: rotate(90deg);
-      }
-
-    }
-
-
-    .scrollarea {
-      overflow: auto;
-      height: 100%;
-    }
   }
-
-
 }
