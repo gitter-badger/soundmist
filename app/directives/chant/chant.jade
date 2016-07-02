@@ -3,17 +3,10 @@
     img(src="{{ item.track.artwork_url_larger }}")
     
   .content 
-    .genre
-      {{ item.track.genre }}
-     
-    .artist
-      {{ item.track.user.username }}
-    
-    .title
-      {{ item.track.title }}
-      
+    .genre {{ item.track.genre }}
+    .artist {{ item.track.user.username }}
+    .title {{ item.track.title }}
 
-      
     .player
       .controls
         .play
