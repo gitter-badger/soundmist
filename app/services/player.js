@@ -66,4 +66,14 @@ angular.module('soundmist').service('Player', class {
     return this.Player.progress || 0
   }
 
+  setVolume (volume) {
+    this.Player.volume = volume / 100
+  }
+
+  getVolume () {
+    if (this.Player) {
+      return this.Player.volume * 100;
+    }
+  }
+
 })

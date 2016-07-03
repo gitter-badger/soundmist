@@ -1,15 +1,23 @@
 .wallpaper(ng-style="wallpaper")
   
   .controls 
-    md-button(class="md-fab small" ng-click="Player.previous()")
-      i(class="material-icons play") skip_previous
-      
-    md-button(class="md-fab" ng-class="{active: Player.isActive(item), isPlaying: Player.isPlaying(item)}" ng-click="Player.isPlaying(item) ? Player.pause(item) : Player.play(item)")
-      i(class="material-icons play") play_arrow
-      i(class="material-icons pause") pause
-      
-    md-button(class="md-fab small" ng-click="Player.previous()")
-      i(class="material-icons play") skip_next
+    .volume
+      i(ng-show="Player.getVolume() > 60 && Player.getVolume() <= 100").material-icons volume_up
+      i(ng-show="Player.getVolume() > 30 && Player.getVolume() <= 60").material-icons volume_down
+      i(ng-show="Player.getVolume() >  1 && Player.getVolume() <= 30").material-icons volume_mute
+      i(ng-show="Player.getVolume() <= 1").material-icons volume_off
+      md-slider(min="0" max="100" value="100" ng-model="volume" ng-init="volume = 100" ng-change="Player.setVolume(volume)")
+
+    .location
+      md-button(class="md-fab small" ng-click="Player.previous()")
+        i(class="material-icons play") skip_previous
+        
+      md-button(class="md-fab" ng-class="{active: Player.isActive(item), isPlaying: Player.isPlaying(item)}" ng-click="Player.isPlaying(item) ? Player.pause(item) : Player.play(item)")
+        i(class="material-icons play") play_arrow
+        i(class="material-icons pause") pause
+        
+      md-button(class="md-fab small" ng-click="Player.previous()")
+        i(class="material-icons play") skip_next
       
   .info 
     
@@ -37,4 +45,4 @@
         .author Future House Music
         .title This One's For You (STVCKS Remix)
       
-md-slider(min="0" max="1000" ng-model="progress").progress
+md-slider(min="0" max="1000" ng-model="progress" id="progress").progress
