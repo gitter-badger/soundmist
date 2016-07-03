@@ -8,28 +8,30 @@ const BrowserWindow = electron.BrowserWindow
 
 let window
 
-app.on('ready', function () {
-  window = new BrowserWindow({
-    width: 1000, height: 800
-  })
+app.on('ready', () => {
+  auth(token => {
+    global.token = token;
 
-  window.setMenu(null)
-  window.loadURL(`file://${__dirname}/app/index.html`)
-  window.webContents.openDevTools()
-  window.on('closed', function () {
-    window = null
-  })
+    window = new BrowserWindow({
+      width: 1000, height: 800
+    })
 
-  auth(window)
+    window.setMenu(null)
+    window.loadURL(`file://${__dirname}/app/index.html`)
+    window.webContents.openDevTools()
+    window.on('closed', () => {
+      window = null
+    })
+  })
 })
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
-app.on('activate', function () {
+app.on('activate', () => {
   if (window === null) {
     createWindow()
   }

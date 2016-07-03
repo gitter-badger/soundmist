@@ -18,7 +18,11 @@ html
       main
         sidebar
         section(ui-view)
-        
+
+ 
+  script.
+    var remote = require('electron').remote
+    window.token = remote.getGlobal('token')
  
   script(src="../node_modules/angular/angular.js")
   script(src="../node_modules/angular-route/angular-route.js")

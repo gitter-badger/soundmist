@@ -4,33 +4,25 @@ const request = require('request')
 const express = require('express')
 const BrowserWindow = electron.BrowserWindow
 
-let mainWindow, authWindow
-let server = express();
+let authWindow
+let server = express()
 
-module.exports = function (windowRef) {
-  mainWindow = windowRef;
-
-  electron.ipcMain.on('authenticate', function () {
-    getToken(token => mainWindow.webContents.send('token', token))
-  });
-};
-
-function getToken (callback) {
-  storage.get('token', function (error, token) {
+module.exports = function (callback) {
+  storage.get('token', (error, token) => {
     let isEmpty = Object.keys(token).length === 0;
     if (error || isEmpty) {
-      getNewToken(callback)
+      getToken(callback)
     } else {
       callback(token) // check if still valid?
     }
   })
 }
 
-function getNewToken (callback) {
-  server.get('/defeerer', function (req, res) {
+function getToken (callback) {
+  server.get('/defeerer', (req, res) => {
     let token = req.param('access_token')
 
-    storage.set('token', token, function (error) {
+    storage.set('token', token, error => {
       if (error) throw error
     })
 
