@@ -37,8 +37,28 @@ player {
     justify-content: center;
     flex-direction: column;
 
+    .actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-top: 5px;
+
+      .active {
+        color: white;
+      }
+
+      .md-icon-button {
+        margin: 0
+      }
+
+      i {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
     .volume {
-      margin-bottom: 15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
       display: flex;
       flex-direction: row;
 
@@ -73,6 +93,24 @@ player {
       align-items: center;
       justify-content: center;
 
+      .md-button:not([disabled]):hover {
+        background-color: white;
+      }
+
+      .md-button {
+        margin: 0;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 0;
+
+        i {
+         font-size: 40px;
+         color: #ff8820;
+        }
+      }
+
       .small {
         transform: scale(0.7);
       }
@@ -91,27 +129,6 @@ player {
         }
       }
     }
-
-
-
-    .md-button:not([disabled]):hover {
-      background-color: white;
-    }
-
-    .md-button {
-      margin: 0;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 0;
-
-      i {
-       font-size: 40px;
-       color: #ff8820;
-      }
-    }
-
   }
 
   .info {

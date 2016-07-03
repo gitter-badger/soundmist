@@ -18,9 +18,17 @@
         
       md-button(class="md-fab small" ng-click="Player.previous()")
         i(class="material-icons play") skip_next
-      
+        
+    .actions
+      md-button(class="md-icon-button" ng-click="Player.toggleRepeat()")
+        i.material-icons(ng-class="{active: Player.isRepeat()}") repeat
+      md-button(class="md-icon-button" ng-click="Player.toggleShuffle()")
+        i.material-icons(ng-class="{active: Player.isShuffle()}") shuffle
+      md-button(class="md-icon-button" ng-click="Player.toggleLike()")
+        i.material-icons(ng-hide="Player.isLiked()") favorite_border
+        i.material-icons.active(ng-show="Player.isLiked()") favorite
+        
   .info 
-    
     .playing
       .wrapper
         .cover

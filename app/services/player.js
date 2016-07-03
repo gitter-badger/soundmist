@@ -76,4 +76,28 @@ angular.module('soundmist').service('Player', class {
     }
   }
 
+  toggleRepeat () {
+    this.repeat = !this.repeat;
+  }
+
+  isRepeat () {
+    return this.repeat;
+  }
+
+  toggleShuffle () {
+    this.shuffle = !this.shuffle;
+  }
+
+  isShuffle () {
+    return this.shuffle;
+  }
+
+  toggleLike () {
+    this.liked = !this.liked;
+  }
+
+  isLiked () {
+    return this.liked;
+  }
+
 })
