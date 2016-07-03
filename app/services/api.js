@@ -2,27 +2,75 @@
 
 angular.module('soundmist').service('API', class {
   constructor ($http, $q) {
-    this.API_BASE = 'https://api-v2.soundcloud.com/';
+    this.API_V1 = 'https://api.soundcloud.com/';
+    this.API_V2 = 'https://api-v2.soundcloud.com/';
     this.$http = $http;
     this.$q = $q;
 
-    this.getFavorites().then(ids => {
-      window.favorites = ids;
-      console.log(window.favorites)
+    //this.getFavorites().then(ids => window.favorites = ids)
+    //this.getPlaylists().then(playlists => console.error(playlists))
+    window.cache = {}
+    this.fetched = false
+
+    setTimeout(() => this.getUser(true), 5000)
+  }
+
+  getUser (force) {
+    if (cache.user && !force) {
+      console.log('got user from cache')
+      return cache.user
+    }
+
+    let config = {
+      method: 'GET',
+      url: this.API_V1 + 'me',
+      params: {
+        oauth_token: token
+      }
+    }
+
+    return this.$http(config).then(response => {
+      return cache.user = response.data
     })
   }
 
-  getStream () {
+  getPlaylists (force) {
+    if (cache.playlists && !force) {
+      console.log('got playlists from cache')
+      return this.$q.resolve(cache.playlists)
+    }
+
     let config = {
       method: 'GET',
-      url: this.API_BASE + 'stream',
+      url: this.API_V1 + 'me/playlists',
+      params: {
+        oauth_token: token
+      }
+    }
+
+    return this.$http(config).then(response => {
+      return cache.playlists = response.data
+    })
+  }
+
+  getStream (force) {
+    if (cache.stream && !force) {
+      console.log('got stream from cache')
+      return this.$q.resolve(cache.stream)
+    }
+
+    let config = {
+      method: 'GET',
+      url: this.API_V2 + 'stream',
       params: {
         oauth_token: token,
         limit: 50
       }
     }
 
-    return this.$http(config)
+    return this.$http(config).then(response => {
+      return cache.stream = response.data
+    })
   }
 
   getFavorites () {
