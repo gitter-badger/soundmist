@@ -92,12 +92,14 @@ angular.module('soundmist').service('Player', class {
     return this.shuffle;
   }
 
-  toggleLike () {
-    this.liked = !this.liked;
+  toggleFavorite () {
+    this.favorite = !this.favorite;
   }
 
-  isLiked () {
-    return this.liked;
+  isFavorite () {
+    if (this.currentItem) {
+      return this.API.isFavorite(this.currentItem)
+    }
   }
 
 })

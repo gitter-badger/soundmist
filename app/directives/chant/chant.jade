@@ -15,7 +15,8 @@
             i(class="material-icons pause") pause
           
         .meta
-          i(class="material-icons") favorite_border
+          i(class="material-icons" ng-hide="API.isFavorite(item)") favorite_border
+          i(class="material-icons active" ng-show="API.isFavorite(item)") favorite
           i(class="material-icons") cached
           i(class="material-icons") link
 

@@ -1,4 +1,4 @@
-angular.module('soundmist').directive('chant', function ($http, $rootScope, Player) {
+angular.module('soundmist').directive('chant', function ($http, $rootScope, API, Player) {
   return {
     restrict: 'E',
     scope: {
@@ -9,6 +9,7 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope, Play
     templateUrl: 'directives/chant/chant.html',
     link: function (scope, element, attrs) {
       scope.Player = Player
+      scope.API = API
 
       // Request high-res song artwork
       if (scope.item.track == undefined) return
