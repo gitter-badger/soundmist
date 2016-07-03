@@ -6,7 +6,7 @@
       i(ng-show="Player.getVolume() > 30 && Player.getVolume() <= 60").material-icons volume_down
       i(ng-show="Player.getVolume() >  1 && Player.getVolume() <= 30").material-icons volume_mute
       i(ng-show="Player.getVolume() <= 1").material-icons volume_off
-      md-slider(min="0" max="100" value="100" ng-model="volume" ng-init="volume = 100" ng-change="Player.setVolume(volume)")
+      md-slider(min="0" max="100" value="100" ng-model="volume" ng-init="volume = 100" ng-change="Player.setVolume(volume)" aria-label="Volume")
 
     .location
       md-button(class="md-fab small" ng-click="Player.previous()")
@@ -53,4 +53,4 @@
         .author Future House Music
         .title This One's For You (STVCKS Remix)
       
-md-slider(min="0" max="1000" ng-model="progress" id="progress").progress
+md-slider(min="0" max="1000" ng-model="progress" id="progress" aria-label="Progress").progress
