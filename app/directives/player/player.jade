@@ -4,8 +4,8 @@
     .volume
       i(ng-show="Player.getVolume() > 60 && Player.getVolume() <= 100").material-icons volume_up
       i(ng-show="Player.getVolume() > 30 && Player.getVolume() <= 60").material-icons volume_down
-      i(ng-show="Player.getVolume() >  1 && Player.getVolume() <= 30").material-icons volume_mute
-      i(ng-show="Player.getVolume() <= 1").material-icons volume_off
+      i(ng-show="Player.getVolume() >= 1 && Player.getVolume() <= 30").material-icons volume_mute
+      i(ng-show="Player.getVolume() == 0").material-icons volume_off
       md-slider(min="0" max="100" value="100" ng-model="volume" ng-init="volume = 100" ng-change="Player.setVolume(volume)" aria-label="Volume")
 
     .location

@@ -9,6 +9,7 @@ angular.module('soundmist').service('Player', class {
     this.Player = null
     this.currentItem = null
     this.paused = false
+    this.volume = 100
   }
 
   play (item) {
@@ -67,13 +68,12 @@ angular.module('soundmist').service('Player', class {
   }
 
   setVolume (volume) {
+    this.volume = volume
     this.Player.volume = volume / 100
   }
 
   getVolume () {
-    if (this.Player) {
-      return this.Player.volume * 100;
-    }
+    return this.volume
   }
 
   toggleRepeat () {

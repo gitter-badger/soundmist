@@ -14,7 +14,10 @@ angular.module('soundmist').directive('chant', function ($http, $rootScope, API,
       // Request high-res song artwork
       if (scope.item.track == undefined) return
       var url = scope.item.track.artwork_url
-      scope.item.track.artwork_url_larger = url.replace('large.jpg', 't500x500.jpg')
+      if (url) {
+        scope.item.track.artwork_url_larger = url.replace('large.jpg', 't500x500.jpg')
+      }
+
 
 
       class Waveform {
