@@ -7,12 +7,10 @@ angular.module('soundmist').service('API', class {
     this.$http = $http;
     this.$q = $q;
 
-    //this.getFavorites().then(ids => window.favorites = ids)
-    //this.getPlaylists().then(playlists => console.error(playlists))
-    window.cache = {}
-    this.fetched = false
 
-    setTimeout(() => this.getUser(true), 5000)
+
+    window.cache = {}
+    this.getFavorites().then(ids => window.favorites = ids)
   }
 
   getUser (force) {
