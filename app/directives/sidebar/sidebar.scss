@@ -65,31 +65,6 @@
     }
   }
 
-  .search-area {
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-
-    .search-field {
-      width: 100%;
-      padding: 5px;
-      padding-top: 20px;
-      padding-bottom: 15px;
-      padding-left: 10px;
-      font-weight: 300;
-      border: none;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    i {
-      margin-top: 3px;
-      color: #cccccc;
-    }
-  }
-
   .browse {
     margin-bottom: 20px;
 
