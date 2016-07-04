@@ -2,14 +2,28 @@
 
 angular.module('soundmist').service('Player', class {
   constructor ($rootScope, $http, ngAudio, API) {
-    this.rootScope = $rootScope
+    this.scope = $rootScope
     this.Audio = ngAudio
     this.API = API
 
     this.Player = null
     this.currentItem = null
-    this.paused = false
     this.volume = 100
+    this.paused = false
+    this.repeat = false
+    this.shuffle = false
+
+    this.scope.$watch(() => {
+      if (this.Player) return this.Player.progress || 0
+    }, progress => {
+      if (progress === 1) {
+        if (this.repeat) {
+          console.log('repeat song')
+        } else {
+          console.log('next song')
+        }
+      }
+    })
   }
 
   play (item) {
@@ -31,7 +45,7 @@ angular.module('soundmist').service('Player', class {
       this.Player = this.Audio.load(this.API.getStreamURL(item))
       this.Player.play()
 
-      this.rootScope.$emit('SHOW_HEADER')
+      this.scope.$emit('SHOW_HEADER')
     }
 
     this.paused = false
