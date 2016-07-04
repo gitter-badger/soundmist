@@ -10,7 +10,7 @@ angular.module('soundmist').service('API', class {
 
 
     window.cache = {}
-    this.getFavorites().then(ids => window.favorites = ids)
+    this.getFavorites().then(ids => window.cache.favorites = ids)
   }
 
   getUser (force) {
@@ -21,7 +21,7 @@ angular.module('soundmist').service('API', class {
 
     let config = {
       method: 'GET',
-      url: this.API_V1 + 'me',
+      url: this.API_V2 + 'me',
       params: {
         oauth_token: token
       }
@@ -109,9 +109,47 @@ angular.module('soundmist').service('API', class {
   }
 
   isFavorite (item) {
-    if ('favorites' in window && item.track) {
-      return favorites.indexOf(item.track.id) > -1
+    if (!item) return
+    if ('favorites' in window.cache && item.track) {
+      return cache.favorites.indexOf(item.track.id) > -1
     }
+  }
+
+  setFavorite (item) {
+    console.log(item)
+    let config = {
+      method: 'PUT',
+      url: this.API_V1 + 'users/' + cache.user.id + '/favorites/' + item.track.id + '.json',
+      params: {
+        oauth_token: token
+      }
+    }
+
+    return this.$http(config).then(response => {
+      if (cache.favorites.indexOf(item.track.id) == -1) {
+        cache.favorites.push(item.track.id)
+      }
+
+      return true
+    })
+  }
+
+  removeFavorite (item) {
+    let config = {
+      method: 'DELETE',
+      url: this.API_V1 + 'users/' + cache.user.id + '/favorites/' + item.track.id + '.json',
+      params: {
+        oauth_token: token
+      }
+    }
+
+    return this.$http(config).then(response => {
+      if (cache.favorites.indexOf(item.track.id) > -1) {
+        cache.favorites.splice(cache.favorites.indexOf(item.track.id))
+      }
+
+      return true
+    })
   }
 
   getStreamURL (item) {

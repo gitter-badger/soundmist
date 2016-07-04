@@ -24,7 +24,7 @@
         i.material-icons(ng-class="{active: Player.isRepeat()}") repeat
       md-button(class="md-icon-button" ng-click="Player.toggleShuffle()")
         i.material-icons(ng-class="{active: Player.isShuffle()}") shuffle
-      md-button(class="md-icon-button" ng-click="Player.toggleFavorite()")
+      md-button(class="md-icon-button" ng-click="Player.isFavorite() ? Player.removeFavorite() : Player.setFavorite()")
         i.material-icons(ng-hide="Player.isFavorite()") favorite_border
         i.material-icons.active(ng-show="Player.isFavorite()") favorite
         

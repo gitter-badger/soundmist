@@ -110,10 +110,16 @@ angular.module('soundmist').service('Player', class {
     this.favorite = !this.favorite;
   }
 
-  isFavorite () {
-    if (this.currentItem) {
-      return this.API.isFavorite(this.currentItem)
-    }
+  isFavorite (item) {
+    return this.API.isFavorite(item || this.currentItem)
+  }
+
+  setFavorite (item) {
+    this.API.setFavorite(item || this.currentItem)
+  }
+
+  removeFavorite (item) {
+    this.API.removeFavorite(item || this.currentItem)
   }
 
 })
